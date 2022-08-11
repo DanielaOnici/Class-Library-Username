@@ -43,6 +43,7 @@ namespace User
             this.dateCreated = DateCreated;
         }
 
+        //Creating a method to override to string
         public override string ToString()
         {
             return $"{id}; {username}; {password}; {dateCreated}";
