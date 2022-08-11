@@ -29,48 +29,28 @@
         }
         public int GetNewId()
         {
-            List<int> ids = new List<int>();
-            try
-            {
-                FileStream fs = new FileStream(fileUsers, FileMode.Open, FileAccess.Read);
-                StreamReader sr = new StreamReader(fs);
+            List<string> ids = new List<string>();
+            FileStream fs = new FileStream(fileUsers, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs);
+            string record;
 
-                while (true)
-                {
-                    string FindGreater = sr.ReadLine();
-
-                    if (FindGreater == null)
-                    {
-                        break;
-                    }
-
-                    int test;
-                    if (Int32.TryParse(FindGreater, out test))
-                    {
-                        ids.Add(test);
-                    }
-                }
-                fs.Dispose();
-                sr.Dispose();
-            }
-            catch (Exception ex)
+            while (!sr.EndOfStream)
             {
-                throw new ArgumentException(ex.ToString());
+                record = sr.ReadLine();
+                ids.Add(record);
             }
-            if(ids.Count > 0)
-            {
-                return ids.Max() + 1;
-            }
+            sr.Dispose();
+            fs.Dispose();
+            if (ids.Count > 0)
+                return ids.Count + 1;
             else
-            {
                 return 1;
-            }
         }
 
         public void AddNewUser(User user)
         {
             StreamWriter writer = new StreamWriter(fileUsers, append: true);
-            writer.WriteLine(user.ToString);
+            writer.WriteLine(user.ToString());
             writer.Dispose();
         }
 

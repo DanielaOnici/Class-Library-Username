@@ -52,6 +52,7 @@ namespace ClassLibraryinClass5
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
+            User.UserManager myUserManager = new();
             int id = int.Parse(txtbId.Text);
             string username = txtbUsername.Text.Trim();
             string password = txtbPassword.Text.Trim();
@@ -65,11 +66,14 @@ namespace ClassLibraryinClass5
             else
             {
                 User.User myUser = new(id, username, password, dateTime);
-                User.UserManager myUserManager = new();
                 rtxtbInfo.AppendText(myUser.messages);
 
                 if(rtxtbInfo.Text == "")
                 {
+                    myUser.Id = id;
+                    myUser.Username = username;
+                    myUser.Password = password;
+                    myUser.DateCreated = dateTime;
                     myUserManager.AddNewUser(myUser);
                     rtxtbInfo.AppendText("User added succesfully!");
                 }

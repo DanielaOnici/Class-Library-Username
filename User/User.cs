@@ -22,11 +22,6 @@ namespace User
 
         public User(int id, string username, string password, DateTime dateCreated)
         {
-            id = Id;
-            username = Username;
-            password = Password;
-            dateCreated = DateCreated;
-
             //The username can't be null/empty or be a space
             if (username == "" || username == null)
                 messages += "Username can't be empty.\n";
@@ -41,6 +36,11 @@ namespace User
             //The date time can't be in the future
             if (dateCreated > DateTime.Today)
                 messages += "Date can't be in the future.\n";
+
+            this.id = Id;
+            this.username = Username;
+            this.password = Password;
+            this.dateCreated = DateCreated;
         }
 
         public override string ToString()
