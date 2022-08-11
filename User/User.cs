@@ -18,6 +18,8 @@ namespace User
         public int Id { get => id; set => id = value; }
         public DateTime DateCreated { get => dateCreated; set => dateCreated = value; }
 
+        public string messages;
+
         public User(int id, string username, string password, DateTime dateCreated)
         {
             id = Id;
@@ -26,19 +28,19 @@ namespace User
             dateCreated = DateCreated;
 
             //The username can't be null/empty or be a space
-            if (String.IsNullOrEmpty(username.Trim()))
-                throw new ArgumentNullException("Username can't be empty.");
+            if (username == "" || username == null)
+                messages += "Username can't be empty.\n";
 
             //Created a regex to accept minimum 6 characters and must contain a letter, a digit and a punctuation symbol
             Regex validPassword = new Regex(@"^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!()–[{}\]:;',?/~^]).{6,}$");
 
             //The password must follow the minimum requirements of the regex
-            if (!validPassword.IsMatch(password.Trim()))
-                throw new ArgumentException("Password must contain a letter, a digit, a punctuation symbol and have at least 6 characters.");
+            if (!validPassword.IsMatch(password))
+                messages += "Password must contain a letter, a digit, a punctuation symbol and have at least 6 characters.\n";
 
+            //The date time can't be in the future
             if (dateCreated > DateTime.Today)
-                throw new ArgumentException("Can't be in the future");
-
+                messages += "Date can't be in the future.\n";
         }
 
         public override string ToString()

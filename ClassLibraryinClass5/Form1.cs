@@ -40,10 +40,40 @@ namespace ClassLibraryinClass5
             txtbId.Enabled = false;
         }
 
+        public bool newIdClicked = false;
+
         private void btnGetNewId_Click(object sender, EventArgs e)
         {
-            User.UserManager myUserManager = new User.UserManager();
+            newIdClicked = true;
+            rtxtbInfo.Clear();
+            User.UserManager myUserManager = new();
             txtbId.Text = myUserManager.GetNewId().ToString();
+        }
+
+        private void btnAddNewUser_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(txtbId.Text);
+            string username = txtbUsername.Text.Trim();
+            string password = txtbPassword.Text.Trim();
+            DateTime dateTime = dateTimePicker.Value.Date;
+            rtxtbInfo.Clear();
+
+            if (newIdClicked == false)
+            {
+                rtxtbInfo.AppendText("Please, select Get New ID first");
+            }
+            else
+            {
+                User.User myUser = new(id, username, password, dateTime);
+                User.UserManager myUserManager = new();
+                rtxtbInfo.AppendText(myUser.messages);
+
+                if(rtxtbInfo.Text == "")
+                {
+                    myUserManager.AddNewUser(myUser);
+                    rtxtbInfo.AppendText("User added succesfully!");
+                }
+            }
         }
     }
 }

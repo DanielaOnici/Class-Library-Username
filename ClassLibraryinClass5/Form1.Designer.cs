@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gpbNewUser = new System.Windows.Forms.GroupBox();
+            this.rtxtbInfo = new System.Windows.Forms.RichTextBox();
             this.btnAddNewUser = new System.Windows.Forms.Button();
             this.lblDateCreated = new System.Windows.Forms.Label();
             this.btnGetNewId = new System.Windows.Forms.Button();
@@ -45,15 +46,13 @@
             this.btnSavePhrase = new System.Windows.Forms.Button();
             this.lblPhrase = new System.Windows.Forms.Label();
             this.txtbPhrase = new System.Windows.Forms.TextBox();
-            this.lblErrorMessageOne = new System.Windows.Forms.Label();
-            this.lblErrorMessageTwo = new System.Windows.Forms.Label();
-            this.lblErrorMessageThree = new System.Windows.Forms.Label();
             this.gpbNewUser.SuspendLayout();
             this.gpbOtherStuff.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbNewUser
             // 
+            this.gpbNewUser.Controls.Add(this.rtxtbInfo);
             this.gpbNewUser.Controls.Add(this.btnAddNewUser);
             this.gpbNewUser.Controls.Add(this.lblDateCreated);
             this.gpbNewUser.Controls.Add(this.btnGetNewId);
@@ -66,10 +65,18 @@
             this.gpbNewUser.Controls.Add(this.txtbId);
             this.gpbNewUser.Location = new System.Drawing.Point(21, 21);
             this.gpbNewUser.Name = "gpbNewUser";
-            this.gpbNewUser.Size = new System.Drawing.Size(391, 209);
+            this.gpbNewUser.Size = new System.Drawing.Size(391, 323);
             this.gpbNewUser.TabIndex = 0;
             this.gpbNewUser.TabStop = false;
             this.gpbNewUser.Text = "New User";
+            // 
+            // rtxtbInfo
+            // 
+            this.rtxtbInfo.Location = new System.Drawing.Point(12, 221);
+            this.rtxtbInfo.Name = "rtxtbInfo";
+            this.rtxtbInfo.Size = new System.Drawing.Size(357, 92);
+            this.rtxtbInfo.TabIndex = 10;
+            this.rtxtbInfo.Text = "";
             // 
             // btnAddNewUser
             // 
@@ -79,6 +86,7 @@
             this.btnAddNewUser.TabIndex = 9;
             this.btnAddNewUser.Text = "Add New User";
             this.btnAddNewUser.UseVisualStyleBackColor = true;
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
             // lblDateCreated
             // 
@@ -212,38 +220,11 @@
             this.txtbPhrase.Size = new System.Drawing.Size(289, 23);
             this.txtbPhrase.TabIndex = 0;
             // 
-            // lblErrorMessageOne
-            // 
-            this.lblErrorMessageOne.AutoSize = true;
-            this.lblErrorMessageOne.Location = new System.Drawing.Point(25, 240);
-            this.lblErrorMessageOne.Name = "lblErrorMessageOne";
-            this.lblErrorMessageOne.Size = new System.Drawing.Size(0, 15);
-            this.lblErrorMessageOne.TabIndex = 2;
-            // 
-            // lblErrorMessageTwo
-            // 
-            this.lblErrorMessageTwo.AutoSize = true;
-            this.lblErrorMessageTwo.Location = new System.Drawing.Point(25, 255);
-            this.lblErrorMessageTwo.Name = "lblErrorMessageTwo";
-            this.lblErrorMessageTwo.Size = new System.Drawing.Size(0, 15);
-            this.lblErrorMessageTwo.TabIndex = 3;
-            // 
-            // lblErrorMessageThree
-            // 
-            this.lblErrorMessageThree.AutoSize = true;
-            this.lblErrorMessageThree.Location = new System.Drawing.Point(25, 270);
-            this.lblErrorMessageThree.Name = "lblErrorMessageThree";
-            this.lblErrorMessageThree.Size = new System.Drawing.Size(0, 15);
-            this.lblErrorMessageThree.TabIndex = 4;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 310);
-            this.Controls.Add(this.lblErrorMessageThree);
-            this.Controls.Add(this.lblErrorMessageTwo);
-            this.Controls.Add(this.lblErrorMessageOne);
+            this.ClientSize = new System.Drawing.Size(827, 352);
             this.Controls.Add(this.gpbOtherStuff);
             this.Controls.Add(this.gpbNewUser);
             this.Name = "Form1";
@@ -254,7 +235,6 @@
             this.gpbOtherStuff.ResumeLayout(false);
             this.gpbOtherStuff.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -277,8 +257,6 @@
         private Button btnSavePhrase;
         private Label lblPhrase;
         private TextBox txtbPhrase;
-        private Label lblErrorMessageOne;
-        private Label lblErrorMessageTwo;
-        private Label lblErrorMessageThree;
+        private RichTextBox rtxtbInfo;
     }
 }

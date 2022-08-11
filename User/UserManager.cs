@@ -3,7 +3,6 @@
     public class UserManager
     {
         private string fileUsers;
-        public string FileUsers { get => fileUsers; set => fileUsers = value; }
 
         public UserManager()
         {
@@ -45,7 +44,7 @@
                         break;
                     }
 
-                    int test = 0;
+                    int test;
                     if (Int32.TryParse(FindGreater, out test))
                     {
                         ids.Add(test);
@@ -71,9 +70,7 @@
         public void AddNewUser(User user)
         {
             StreamWriter writer = new StreamWriter(fileUsers, append: true);
-            writer.WriteLine($"{user}\n");
-            writer.Flush();
-            writer.Close();
+            writer.WriteLine(user.ToString);
             writer.Dispose();
         }
 
